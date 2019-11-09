@@ -7,7 +7,10 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "category", schema = "public")
+@Table(name = "category", schema = "public", indexes = {
+        @Index(columnList = "name", name = "category_name_idx"),
+}
+)
 public class Category {
 
     @Id
