@@ -1,10 +1,9 @@
 package com.demo.relationships.relationshipsdemo.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "article")
@@ -25,6 +24,11 @@ public class Article {
 
     @Column(name = "content")
     private String content;
+
+    @JsonBackReference
+    @ManyToMany(mappedBy = "articles")
+    Set<Category> categories;
+
 
     public Article() {
     }
@@ -75,5 +79,13 @@ public class Article {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }

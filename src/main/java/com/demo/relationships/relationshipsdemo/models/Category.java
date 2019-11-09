@@ -1,16 +1,10 @@
 package com.demo.relationships.relationshipsdemo.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "category", schema = "public")
@@ -24,7 +18,8 @@ public class Category {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JsonManagedReference
     @JoinTable(
             name = "category_article",
             joinColumns = @JoinColumn(name = "category_id"),
