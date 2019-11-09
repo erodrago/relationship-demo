@@ -1,7 +1,10 @@
 package com.demo.relationships.relationshipsdemo.models;
 
-import javax.persistence.*;
-import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "article")
@@ -11,7 +14,6 @@ public class Article {
     @GeneratedValue
     @Column(name = "id")
     private long id;
-
     @Column(name = "title")
     private String title;
 
@@ -23,8 +25,6 @@ public class Article {
 
     @Column(name = "content")
     private String content;
-
-
 
     public Article() {
     }
