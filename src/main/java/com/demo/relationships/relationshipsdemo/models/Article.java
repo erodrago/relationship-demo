@@ -25,9 +25,7 @@ public class Article {
     @Column(name = "content")
     private String content;
 
-    @JsonBackReference
-    @ManyToMany(mappedBy = "articles")
-    Set<Category> categories;
+
 
 
     public Article() {
@@ -79,13 +77,5 @@ public class Article {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Set<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
     }
 }

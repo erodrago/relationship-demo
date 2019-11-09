@@ -18,14 +18,9 @@ public class Category {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JsonManagedReference
-    @JoinTable(
-            name = "category_article",
-            joinColumns = @JoinColumn(name = "category_id"),
-            inverseJoinColumns = @JoinColumn(name = "article_id")
-    )
-    private Set<Article> articles;
+    @OneToOne
+    @JoinColumn(name = "article_id")
+    private Article articles;
 
     public Category() {
     }
@@ -53,11 +48,11 @@ public class Category {
         this.name = name;
     }
 
-    public Set<Article> getArticles() {
+    public Article getArticles() {
         return articles;
     }
 
-    public void setArticles(Set<Article> articles) {
+    public void setArticles(Article articles) {
         this.articles = articles;
     }
 }

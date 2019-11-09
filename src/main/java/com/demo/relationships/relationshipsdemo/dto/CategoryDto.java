@@ -5,7 +5,7 @@ public class CategoryDto {
 
 
     private String name;
-    private Long [] articleName;
+    private Long articleName;
 
 
 
@@ -17,11 +17,11 @@ public class CategoryDto {
         this.name = name;
     }
 
-    public Long [] getArticleName() {
+    public Long  getArticleName() {
         return articleName;
     }
 
-    public void setArticleName(Long [] articleName) {
+    public void setArticleName(Long  articleName) {
         this.articleName = articleName;
     }
 }
