@@ -25,12 +25,18 @@ public class CategoryService {
         Category category = new Category();
         category.setName(categoryDto.getName());
 
+        Set<Article> articleList = new HashSet<>();
 
-        Optional<Article> article = articleRepository.findById(categoryDto.getArticleName());
+        for(Long oneArticle: categoryDto.getArticleName()){
+            Optional<Article> article = articleRepository.findById(oneArticle);
 
+            if(article.isPresent()) {
 
+                articleList.add(article.get());
+            }
+        }
 
-        category.setArticles(article.get());
+        category.setArticles(articleList);
 
         category = categoryRepository.save(category);
 
